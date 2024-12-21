@@ -11,8 +11,8 @@ app = Flask(__name__)
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
 
-# Ensure the static directory exists
-static_dir = "static"
+# Define the writable directory for saving plots
+writable_dir = "/tmp"
 
 # Load the dataset
 try:
@@ -49,8 +49,8 @@ if not nutri.empty:
     plt.xlabel('Situation')
     plt.ylabel('Counts')
 
-    # Save the first plot as an image file in the static directory
-    plot1 = os.path.join(static_dir, 'nutrition_plot1.png')
+    # Save the first plot as an image file in the writable directory
+    plot1 = os.path.join(writable_dir, 'nutrition_plot1.png')
     plt.savefig(plot1)
     plt.close()
 
@@ -63,8 +63,8 @@ if not nutri.empty:
     plt.xlabel('Gender')
     plt.ylabel('Counts')
 
-    # Save the second plot as an image file in the static directory
-    plot2 = os.path.join(static_dir, 'nutrition_plot2.png')
+    # Save the second plot as an image file in the writable directory
+    plot2 = os.path.join(writable_dir, 'nutrition_plot2.png')
     plt.savefig(plot2)
     plt.close()
 
@@ -74,8 +74,8 @@ if not nutri.empty:
     plt.xlabel('Situation')
     plt.ylabel('Coffee Consumption')
 
-    # Save the third plot as an image file in the static directory
-    plot3 = os.path.join(static_dir, 'nutrition_plot3.png')
+    # Save the third plot as an image file in the writable directory
+    plot3 = os.path.join(writable_dir, 'nutrition_plot3.png')
     plt.savefig(plot3)
     plt.close()
 
@@ -85,8 +85,8 @@ if not nutri.empty:
     plt.xlabel('Age')
     plt.ylabel('Height')
 
-    # Save the fourth plot as an image file in the static directory
-    plot4 = os.path.join(static_dir, 'nutrition_plot4.png')
+    # Save the fourth plot as an image file in the writable directory
+    plot4 = os.path.join(writable_dir, 'nutrition_plot4.png')
     plt.savefig(plot4)
     plt.close()
 
@@ -95,8 +95,8 @@ if not nutri.empty:
     plt.title('Boxplot Age')
     plt.xlabel('Age')
 
-    # Save the fifth plot as an image in the static directory
-    plot5 = os.path.join(static_dir, 'nutrition_plot5.png')
+    # Save the fifth plot as an image in the writable directory
+    plot5 = os.path.join(writable_dir, 'nutrition_plot5.png')
     plt.savefig(plot5)
     plt.close()
 
@@ -105,8 +105,8 @@ if not nutri.empty:
     plt.title('Boxplot Height')
     plt.xlabel('Height')
 
-    # Save the sixth plot as an image in the static directory
-    plot6 = os.path.join(static_dir, 'nutrition_plot6.png')
+    # Save the sixth plot as an image in the writable directory
+    plot6 = os.path.join(writable_dir, 'nutrition_plot6.png')
     plt.savefig(plot6)
     plt.close()
 
@@ -117,7 +117,7 @@ if not nutri.empty:
     plt.ylabel('Proportion of Total')
 
     # Save the seventh Histogram of Age
-    plot7 = os.path.join(static_dir, 'nutrition_plot7.png')
+    plot7 = os.path.join(writable_dir, 'nutrition_plot7.png')
     plt.savefig(plot7)
     plt.close()
 
@@ -130,7 +130,7 @@ if not nutri.empty:
     plt.xlim(x.min(), x.max())
 
     # Save the eighth Empirical distribution
-    plot8 = os.path.join(static_dir, 'nutrition_plot8.png')
+    plot8 = os.path.join(writable_dir, 'nutrition_plot8.png')
     plt.savefig(plot8)
     plt.close()
 
@@ -141,7 +141,7 @@ if not nutri.empty:
     plt.ylabel('Counts')
 
     # Save the first Bivariate Plot 
-    plot9 = os.path.join(static_dir, 'nutrition_plot9.png')
+    plot9 = os.path.join(writable_dir, 'nutrition_plot9.png')
     plt.savefig(plot9)
     plt.close()
 
@@ -160,7 +160,7 @@ if not nutri.empty:
     plt.plot(nutri.height, m*nutri.height + b, color='red', linewidth=2)
 
     # Save the second Bivariate Data
-    plot10 = os.path.join(static_dir, 'nutrition_plot10.png')
+    plot10 = os.path.join(writable_dir, 'nutrition_plot10.png')
     plt.savefig(plot10)
     plt.close()
 
@@ -173,14 +173,14 @@ if not nutri.empty:
     plt.xticks([1, 2], ['Male', 'Female'])
 
     # Save the plot for One Qualitative and One Quantitative
-    plot11 = os.path.join(static_dir, 'nutrition_plot11.png')
+    plot11 = os.path.join(writable_dir, 'nutrition_plot11.png')
     plt.savefig(plot11)
     plt.close()
 
-# Serve the images from the static directory
-@app.route('/static/<path:filename>')
-def static_files(filename):
-    return send_from_directory(static_dir, filename)
+# Serve the images from the writable directory
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory(writable_dir, filename)
 
 @app.route('/')
 def index():
@@ -188,7 +188,7 @@ def index():
         # Convert the DataFrame to an HTML table
         nutri_html = nutri.to_html(classes='table table-striped', index=False)
         # Render the HTML template and pass the plot filenames and the HTML table
-        return render_template('index.html', plot1_url=plot1, plot2_url=plot2, plot3_url=plot3, plot4_url=plot4, plot5_url=plot5, plot6_url=plot6, plot7_url=plot7, plot8_url=plot8, plot9_url=plot9, plot10_url=plot10, plot11_url=plot11, table=nutri_html)
+        return render_template('index.html', plot1_url='/images/nutrition_plot1.png', plot2_url='/images/nutrition_plot2.png', plot3_url='/images/nutrition_plot3.png', plot4_url='/images/nutrition_plot4.png', plot5_url='/images/nutrition_plot5.png', plot6_url='/images/nutrition_plot6.png', plot7_url='/images/nutrition_plot7.png', plot8_url='/images/nutrition_plot8.png', plot9_url='/images/nutrition_plot9.png', plot10_url='/images/nutrition_plot10.png', plot11_url='/images/nutrition_plot11.png', table=nutri_html)
     else:
         return "Error: Dataset could not be loaded."
 
