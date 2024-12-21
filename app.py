@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np 
+import numpy as np
 import seaborn as sns
 from flask import Flask, render_template
 import logging
