@@ -2,69 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Plots and Data</title>
+    <title>Nutrition Report</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <marquee direction="'right" class="my-4">Nutrition Plots and Data</marquee>
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Situation Counts</h2>
-                <img src="{{ plot1_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 1">
-            </div>
-            <div class="col-md-6">
-                <h2>Gender Distribution</h2>
-                <img src="{{ plot2_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Situation vs Coffee</h2>
-                <img src="{{ plot3_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 3">
-            </div>
-            <div class="col-md-6">
-                <h2>Age vs Height</h2>
-                <img src="{{ plot4_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 4">
-            </div>
-            <div class="col-md-6">
-                <h2>BoxPlot Age</h2>
-                <img src="{{ plot5_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 5">
-            </div>
-            <div class="col-md-6">
-                <h2>BoxPlot Height</h2>
-                <img src="{{ plot6_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 6">
-            </div>
-            <div class="col-md-6">
-                <h2>Histogram of Age</h2>
-                <img src="{{ plot7_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 7">
-            </div>
-            <div class="col-md-6">
-                <h2>Empirical Distribution of Age</h2>
-                <img src="{{ plot8_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 8">
-            </div>
-            <div class="col-md-6">
-                <h2>Two-Way Plots</h2>
-                <img src="{{ plot9_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 9">
-            </div>
-            <div class="col-md-6">
-                <h2>Scatter Plot of Weight x Height</h2>
-                <img src="{{ plot10_url | replace('static/', '') }}" class="img-fluid" alt="Nutrition Plot 10">
-            </div>
-            <div class="col-md-6">
-                <h2> Plots For One Qualitative and Quantitative</h2>
-                <img src="{{ plot11_url | replace('stattic/', '') }}" class="img-fluid" alt="Nutrition Plot 11">
-            </div>
-        </div>
+        <h1 class="my-4">Nutrition Report</h1>
         <div class="row">
             <div class="col-md-12">
-                <h3>Dataset</h3>
-                <div class="table-responsive">
-                    {{ table | safe }}
-                </div>
+                <h2>Data Table</h2>
+                {{ table | safe }}
             </div>
         </div>
-    </div>
-</body>
-</html>
+        <div class="row[_{{{CITATION{{{_1{](https://github.com/DSML-book/Programs/tree/486603c957bd4ab8755dfdac556f324f4ad7739a/Chapter1%2Fsnippets.py)[_{{{CITATION{{{_2{](https://github.com/jhonatanjacinto/fp9252/tree/c6de98163005f9d574953a35bc4b2127a74ec61f/exemplos%2F09-mysqli.php)[_{{{CITATION{{{_3{](https://github.com/mbarlund/lotrt/tree/82637befa20bd0894976e1dd307807c935e21bf8/index.php)[_{{{CITATION{{{_4{](https://github.com/MartinezTech/practices_php_v2/tree/b2442131e10910e5f1d5d1fa1dc14f981a1b4490/Workspace%2Fbasic%20practices%20server%20php%2FUF1-NF2-PAC01-Directives%2FN2P1AlexMartinezComments.php)
