@@ -8,12 +8,7 @@
 <body>
     <div class="container">
         <h1 class="my-4">Nutrition Report</h1>
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Data Table</h2>
-                {{ table | safe }}
-            </div>
-        </div>
+    
         <div class="row">
             <div class="col-md-6">
                 <h2>Situation Counts</h2>
@@ -58,6 +53,10 @@
             <div class="col-md-6">
                 <h2>Gender vs Weight</h2>
                 <img src="{{ plot11_url }}" class="img-fluid" alt="Gender vs Weight">
+            </div>
+            <div class="col-md-12">
+                <h2>Data Table</h2>
+                {{ table | safe }}
             </div>
         </div>
     </div>
